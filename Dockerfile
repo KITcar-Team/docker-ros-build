@@ -5,3 +5,6 @@ RUN apt update && apt install git clang-format-3.6 ros-kinetic-desktop ros-kinet
  ros-kinetic-tf2-eigen ros-kinetic-tf2-geometry-msgs ros-kinetic-ackermann-msgs ros-kinetic-ecl-core \
  libatlas-base-dev protobuf-compiler libprotobuf-dev ros-kinetic-control-toolbox wget unzip -y
 
+RUN apt-get install -y lcov ccache
+
+RUN ln -s /usr/bin/ccache /usr/local/bin/gcc; ln -s /usr/bin/ccache /usr/local/bin/g++; ln -s /usr/bin/ccache /usr/local/bin/cc; ln -s /usr/bin/ccache /usr/local/bin/c++
