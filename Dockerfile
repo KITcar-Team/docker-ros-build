@@ -8,10 +8,8 @@ RUN apt update && apt install git ros-melodic-desktop ros-melodic-realtime-tools
  libatlas-base-dev protobuf-compiler libprotobuf-dev ros-melodic-control-toolbox \
  wget unzip python-pip python-tk -y
 
-RUN apt-get install -y lcov ccache ros-melodic-rosdoc-lite libpcl-registration1.7
+RUN apt-get install -y lcov ccache
 
 RUN ln -s /usr/bin/ccache /usr/local/bin/gcc; ln -s /usr/bin/ccache /usr/local/bin/g++; ln -s /usr/bin/ccache /usr/local/bin/cc; ln -s /usr/bin/ccache /usr/local/bin/c++
 RUN ln -s /usr/bin/ccache /usr/local/bin/clang; ln -s /usr/bin/ccache /usr/local/bin/clang++
-
-RUN pip install slycot control scipy numpy 
 
