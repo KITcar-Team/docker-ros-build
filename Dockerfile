@@ -1,5 +1,5 @@
 FROM ros:kinetic-robot
-MAINTAINER Marek Wehmer marek@wehmermail.net
+LABEL name=docker-ros-build version=latest
 
 RUN apt update && apt install git clang-format-3.6 ros-kinetic-desktop ros-kinetic-realtime-tools ros-kinetic-tf2 \
  clang-4.0 clang-tidy-4.0 llvm-4.0 libomp-dev \

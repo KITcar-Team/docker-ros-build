@@ -1,0 +1,28 @@
+stages:
+  - lint
+  - deploy
+
+lint-dockerfile:
+  type: lint
+  image: projectatomic/dockerfile-lint
+  script:
+    - dockerfile_lint -p Dockerfile
+
+build-docker:
+  image: docker:git
+  services:
+    - docker:dind
+  type: deploy
+  tags:
+    - privileged_rights
+  dependencies:
+    - lint-dockerfile
+  script:
+    - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN git.kitcar-team.de:4567
+    - docker build -t git.kitcar-team.de:4567/kitcar/docker-ros-build .
+    - docker push git.kitcar-team.de:4567/kitcar/docker-ros-build:latest
+  only:
+    - master
+    - deploy # for testing
+  environment: gitlab
+  when: manual
