@@ -6,7 +6,7 @@ RUN apt update && apt install git ros-melodic-desktop ros-melodic-realtime-tools
  ros-melodic-tf2-eigen ros-melodic-tf2-geometry-msgs ros-melodic-ackermann-msgs \
  ros-melodic-camera-calibration-parsers ros-melodic-camera-info-manager \
  libatlas-base-dev protobuf-compiler libprotobuf-dev ros-melodic-control-toolbox \
- wget unzip python-pip python-tk -y
+ wget unzip python-pip python-tk qtbase5-dev -y
 
 RUN apt-get install -y lcov ccache
 
