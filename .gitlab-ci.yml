@@ -1,0 +1,46 @@
+stages:
+  - lint
+  - stage
+  - deploy
+
+lint-dockerfile:
+  type: lint
+  image: projectatomic/dockerfile-lint
+  script:
+    - dockerfile_lint -p Dockerfile
+
+stage-docker:
+  image: docker:git
+  services:
+    - docker:dind
+  type: deploy
+  tags:
+    - privileged_rights
+  dependencies:
+    - lint-dockerfile
+  script:
+    - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN git.kitcar-team.de:4567
+    - docker build -t git.kitcar-team.de:4567/kitcar/docker-ros-build:$CI_COMMIT_REF_NAME .
+    - docker push git.kitcar-team.de:4567/kitcar/docker-ros-build$CI_COMMIT_REF_NAME
+  except:
+    - master
+  environment: gitlab
+  when: manual
+
+deploy-docker:
+  image: docker:git
+  services:
+    - docker:dind
+  type: deploy
+  tags:
+    - privileged_rights
+  dependencies:
+    - lint-dockerfile
+  script:
+    - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN git.kitcar-team.de:4567
+    - docker build -t git.kitcar-team.de:4567/kitcar/docker-ros-build:latest .
+    - docker push git.kitcar-team.de:4567/kitcar/docker-ros-build:latest
+  only:
+    - master
+  environment: gitlab
+  when: manual

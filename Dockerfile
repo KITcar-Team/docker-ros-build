@@ -1,5 +1,5 @@
 FROM ros:melodic-robot
-MAINTAINER Marek Wehmer marek@wehmermail.net
+LABEL name=docker-ros-build version=melodic
 
 RUN apt update && apt install git ros-melodic-desktop ros-melodic-realtime-tools ros-melodic-tf2 \
  clang-6.0 clang-tidy-6.0 llvm-6.0 libomp-dev \
