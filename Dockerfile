@@ -1,6 +1,9 @@
 FROM ros:melodic-robot
 LABEL name=docker-ros-build version=melodic
 
+# remove this as soon as melodic-robot has been updated
+RUN apt update && apt upgrade -y
+
 RUN apt update && apt install git ros-melodic-desktop ros-melodic-realtime-tools ros-melodic-tf2 \
  clang-6.0 clang-tidy-6.0 llvm-6.0 libomp-dev \
  ros-melodic-tf2-eigen ros-melodic-tf2-geometry-msgs ros-melodic-ackermann-msgs \
