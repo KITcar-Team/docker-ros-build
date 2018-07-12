@@ -19,3 +19,8 @@ RUN pip install slycot control scipy numpy
 RUN echo "deb http://ppa.launchpad.net/adrozdoff/cmake/ubuntu xenial main" >> /etc/apt/sources.list.d/adrozdoff-ubuntu-cmake-xenial.list
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-key 9bf48f7f3cec09857fb3c56e4b7e4b9010bbfe68
 RUN apt update && apt install -y cmake
+
+# works for both xenial and bionic
+RUN echo "deb http://realsense-hw-public.s3.amazonaws.com/Debian/apt-repo xenial main" >> /etc/apt/sources.list.d/realsense-public.list
+RUN sudo apt-key adv --keyserver keys.gnupg.net --recv-key C8B3A55A6F3EFCDE
+RUN apt update && apt install -y librealsense2 librealsense2-dev
