@@ -23,5 +23,6 @@ RUN apt update && apt install -y cmake
 
 # works for both xenial and bionic
 RUN echo "deb http://realsense-hw-public.s3.amazonaws.com/Debian/apt-repo xenial main" >> /etc/apt/sources.list.d/realsense-public.list
-RUN apt-key adv --keyserver keys.gnupg.net --recv-key C8B3A55A6F3EFCDE
+ADD realsense_repo.key /realsense_repo.key
+RUN apt-key add /realsense_repo.key
 RUN apt update && apt install -y librealsense2 librealsense2-dev
