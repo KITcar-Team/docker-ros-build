@@ -22,3 +22,5 @@ RUN echo "deb http://realsense-hw-public.s3.amazonaws.com/Debian/apt-repo xenial
 ADD realsense_repo.key /realsense_repo.key
 RUN apt-key add /realsense_repo.key
 RUN apt update && apt install -y librealsense2 librealsense2-dev
+
+RUN apt install libzbar-dev -y
