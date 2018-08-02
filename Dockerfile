@@ -13,7 +13,7 @@ RUN apt update && apt install git ros-melodic-desktop ros-melodic-realtime-tools
  wget unzip python-pip python-tk python-kitchen qtbase5-dev doxygen -y
 
 RUN apt-get install -y lcov ccache
-RUN apt-get install -y gcc-8 g++8; \
+RUN apt-get install -y gcc-8 g++-8; \
  update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-8 100; \
  update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-7 50; \
  update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-8 100; \
