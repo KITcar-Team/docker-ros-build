@@ -12,7 +12,7 @@ RUN apt update && apt install git ros-melodic-desktop ros-melodic-realtime-tools
  libatlas-base-dev protobuf-compiler libprotobuf-dev ros-melodic-control-toolbox \
  wget unzip python-pip python-tk python-kitchen qtbase5-dev doxygen -y
 
-RUN apt-get install -y lcov ccache
+RUN apt-get install -y ccache
 RUN apt-get install -y gcc-8 g++-8; \
  update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-8 100; \
  update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-7 50; \
@@ -32,5 +32,8 @@ RUN echo "deb http://realsense-hw-public.s3.amazonaws.com/Debian/apt-repo xenial
 ADD realsense_repo.key /realsense_repo.key
 RUN apt-key add /realsense_repo.key
 RUN apt update && apt install -y librealsense2 librealsense2-dev
+
+RUN git clone https://github.com/linux-test-project/lcov.git
+RUN cd lcov; make install
 
 RUN apt install libzbar-dev -y
