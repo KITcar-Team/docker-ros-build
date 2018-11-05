@@ -4,8 +4,11 @@ LABEL name=docker-ros-build version=melodic
 # remove this as soon as melodic-robot has been updated
 RUN apt update && apt upgrade -y
 
+RUN echo "deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-7 main" >> /etc/apt/sources.list.d/clang_7.list
+RUN wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
+
 RUN apt update && apt install git ros-melodic-desktop ros-melodic-realtime-tools ros-melodic-tf2 \
- clang-6.0 clang-tidy-6.0 llvm-6.0 libomp-dev \
+ clang-7 clang-tidy-7 llvm-7 libomp-dev \
  ros-melodic-tf2-eigen ros-melodic-tf2-geometry-msgs ros-melodic-ackermann-msgs \
  ros-melodic-camera-calibration-parsers ros-melodic-camera-info-manager \
  ros-melodic-pcl-ros \
