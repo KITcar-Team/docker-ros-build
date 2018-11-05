@@ -3,6 +3,7 @@ LABEL name=docker-ros-build version=melodic
 
 # remove this as soon as melodic-robot has been updated
 RUN apt update && apt upgrade -y
+RUN apt install wget -y
 
 RUN echo "deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-7 main" >> /etc/apt/sources.list.d/clang_7.list
 RUN wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
