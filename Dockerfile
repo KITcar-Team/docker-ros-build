@@ -30,3 +30,4 @@ RUN apt update && apt install -y librealsense2 librealsense2-dev
 RUN apt install libzbar-dev -y
 
 RUN apt install python-catkin-lint -y
+
