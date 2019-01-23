@@ -5,11 +5,11 @@ LABEL name=docker-ros-build version=melodic
 RUN apt update && apt upgrade -y
 RUN apt install wget -y
 
-RUN echo "deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-7 main" >> /etc/apt/sources.list.d/clang_7.list
+RUN echo "deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-8 main" >> /etc/apt/sources.list.d/clang_8.list
 RUN wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
 
 RUN apt update && apt install git ros-melodic-desktop ros-melodic-realtime-tools ros-melodic-tf2 \
- clang-7 clang-tidy-7 llvm-7 libomp-dev \
+ clang-8 clang-tidy-8 llvm-8 libomp-dev \
  ros-melodic-tf2-eigen ros-melodic-tf2-geometry-msgs ros-melodic-ackermann-msgs \
  ros-melodic-camera-calibration-parsers ros-melodic-camera-info-manager \
  ros-melodic-pcl-ros \
