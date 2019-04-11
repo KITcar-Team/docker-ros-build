@@ -12,20 +12,10 @@ RUN apt update && apt install git ros-melodic-desktop ros-melodic-realtime-tools
  libatlas-base-dev protobuf-compiler libprotobuf-dev ros-melodic-control-toolbox \
  wget unzip python-pip python-tk python-kitchen qtbase5-dev doxygen -y
 
+RUN apt-get purge -y gcc-7 g++-7
+
 RUN apt-get install -y ccache
 RUN apt-get install -y gcc-8 g++-8; \
- update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-8 100; \
- update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-7 50; \
- update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-8 100; \
- update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-7 50; \
- update-alternatives --install /usr/bin/cpp cpp-bin /usr/bin/cpp-8 100; \
- update-alternatives --install /usr/bin/cpp cpp-bin /usr/bin/cpp-7 50; \
- update-alternatives --install /usr/bin/cpp cpp-bin /usr/bin/gcov-8 100; \
- update-alternatives --install /usr/bin/cpp cpp-bin /usr/bin/gcov-7 50; \
- update-alternatives --set g++ /usr/bin/g++-8; \
- update-alternatives --set gcc /usr/bin/gcc-8; \
- update-alternatives --set gcc /usr/bin/gcov-8; \
- update-alternatives --set cpp-bin /usr/bin/cpp-8
 
 RUN ln -s /usr/bin/ccache /usr/local/bin/gcc; ln -s /usr/bin/ccache /usr/local/bin/g++; ln -s /usr/bin/ccache /usr/local/bin/cc; ln -s /usr/bin/ccache /usr/local/bin/c++
 RUN ln -s /usr/bin/ccache /usr/local/bin/clang; ln -s /usr/bin/ccache /usr/local/bin/clang++
