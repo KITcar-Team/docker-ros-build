@@ -3,14 +3,18 @@ LABEL name=docker-ros-build version=melodic
 
 # remove this as soon as melodic-robot has been updated
 RUN apt update && apt upgrade -y
+RUN apt install wget -y
+
+RUN echo "deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-8 main" >> /etc/apt/sources.list.d/clang_8.list
+RUN wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
 
 RUN apt update && apt install git ros-melodic-desktop ros-melodic-realtime-tools ros-melodic-tf2 \
- clang-6.0 clang-tidy-6.0 llvm-6.0 libomp-dev \
+ clang-8 clang-tidy-8 llvm-8 libomp-dev \
  ros-melodic-tf2-eigen ros-melodic-tf2-geometry-msgs ros-melodic-ackermann-msgs \
  ros-melodic-camera-calibration-parsers ros-melodic-camera-info-manager \
  ros-melodic-pcl-ros \
  libatlas-base-dev protobuf-compiler libprotobuf-dev ros-melodic-control-toolbox \
- wget unzip python-pip python-tk python-kitchen qtbase5-dev doxygen -y
+ unzip python-pip python-tk python-kitchen qtbase5-dev doxygen -y
 
 RUN apt-get install -y ccache
 RUN apt-get install -y gcc-8 g++-8; \
@@ -40,3 +44,6 @@ RUN git clone https://github.com/linux-test-project/lcov.git
 RUN cd lcov; make install
 
 RUN apt install libzbar-dev -y
+
+RUN apt install python-catkin-lint -y
+
