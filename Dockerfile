@@ -20,8 +20,8 @@ RUN apt-get install -y gcc-8 g++-8; \
  update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-7 50; \
  update-alternatives --install /usr/bin/cpp cpp-bin /usr/bin/cpp-8 100; \
  update-alternatives --install /usr/bin/cpp cpp-bin /usr/bin/cpp-7 50; \
- update-alternatives --install /usr/bin/cpp cpp-bin /usr/bin/gcov-8 100; \
- update-alternatives --install /usr/bin/cpp cpp-bin /usr/bin/gcov-7 50; \
+ update-alternatives --install /usr/bin/gcov gcov /usr/bin/gcov-8 100; \
+ update-alternatives --install /usr/bin/gcov gcov /usr/bin/gcov-7 50; \
  update-alternatives --set g++ /usr/bin/g++-8; \
  update-alternatives --set gcc /usr/bin/gcc-8; \
  update-alternatives --set gcov /usr/bin/gcov-8; \
