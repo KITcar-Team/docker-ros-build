@@ -1,25 +1,25 @@
-FROM ros:kinetic-robot
-LABEL name=docker-ros-build version=latest
+FROM ros:melodic-robot
+LABEL name=docker-ros-build version=melodic
 
-RUN apt update && apt install git clang-format-3.6 ros-kinetic-desktop ros-kinetic-realtime-tools ros-kinetic-tf2 \
- clang-4.0 clang-tidy-4.0 llvm-4.0 libomp-dev \
- clang-5.0 clang-tidy-5.0 llvm-5.0 \
- ros-kinetic-tf2-eigen ros-kinetic-tf2-geometry-msgs ros-kinetic-ackermann-msgs \
- ros-kinetic-camera-calibration-parsers ros-kinetic-camera-info-manager \
- libatlas-base-dev protobuf-compiler libprotobuf-dev ros-kinetic-control-toolbox \
- wget unzip python-pip python-tk -y
+# remove this as soon as melodic-robot has been updated
+RUN apt update && apt upgrade -y
+RUN apt install wget -y
 
-RUN apt-get install -y lcov ccache ros-kinetic-rosdoc-lite libpcl-registration1.7
+RUN echo "deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-7 main" >> /etc/apt/sources.list.d/clang_7.list
+RUN wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
+
+RUN apt update && apt install git ros-melodic-desktop ros-melodic-realtime-tools ros-melodic-tf2 \
+ clang-7 clang-tidy-7 llvm-7 libomp-dev \
+ ros-melodic-tf2-eigen ros-melodic-tf2-geometry-msgs ros-melodic-ackermann-msgs \
+ ros-melodic-camera-calibration-parsers ros-melodic-camera-info-manager \
+ ros-melodic-pcl-ros \
+ libatlas-base-dev protobuf-compiler libprotobuf-dev ros-melodic-control-toolbox \
+ unzip python-pip python-tk python-kitchen qtbase5-dev doxygen -y
+
+RUN apt-get install -y lcov ccache
 
 RUN ln -s /usr/bin/ccache /usr/local/bin/gcc; ln -s /usr/bin/ccache /usr/local/bin/g++; ln -s /usr/bin/ccache /usr/local/bin/cc; ln -s /usr/bin/ccache /usr/local/bin/c++
 RUN ln -s /usr/bin/ccache /usr/local/bin/clang; ln -s /usr/bin/ccache /usr/local/bin/clang++
-
-RUN apt install -y libopenblas-dev
-RUN pip install slycot control scipy numpy
-
-RUN echo "deb http://ppa.launchpad.net/adrozdoff/cmake/ubuntu xenial main" >> /etc/apt/sources.list.d/adrozdoff-ubuntu-cmake-xenial.list
-RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-key 9bf48f7f3cec09857fb3c56e4b7e4b9010bbfe68
-RUN apt update && apt install -y cmake
 
 # works for both xenial and bionic
 RUN echo "deb http://realsense-hw-public.s3.amazonaws.com/Debian/apt-repo xenial main" >> /etc/apt/sources.list.d/realsense-public.list
@@ -28,3 +28,5 @@ RUN apt-key add /realsense_repo.key
 RUN apt update && apt install -y librealsense2 librealsense2-dev
 
 RUN apt install libzbar-dev -y
+
+RUN apt install python-catkin-lint -y
