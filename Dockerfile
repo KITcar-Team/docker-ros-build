@@ -13,6 +13,7 @@ RUN apt update && apt install git ros-melodic-desktop ros-melodic-realtime-tools
  ros-melodic-tf2-eigen ros-melodic-tf2-geometry-msgs ros-melodic-ackermann-msgs \
  ros-melodic-camera-calibration-parsers ros-melodic-camera-info-manager \
  ros-melodic-pcl-ros \
+ ros-melodic-gazebo-ros-control ros-melodic-gazebo-ros-pkgs \
  libatlas-base-dev protobuf-compiler libprotobuf-dev ros-melodic-control-toolbox \
  unzip python-pip python-tk python-kitchen qtbase5-dev doxygen -y
 
