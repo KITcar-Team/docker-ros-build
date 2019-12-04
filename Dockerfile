@@ -8,16 +8,8 @@ RUN apt install wget -y
 RUN echo "deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-7 main" >> /etc/apt/sources.list.d/clang_7.list
 RUN wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
 
-RUN apt update && apt install git ros-melodic-desktop ros-melodic-realtime-tools ros-melodic-tf2 \
- clang-7 clang-tidy-7 llvm-7 libomp-dev \
- ros-melodic-tf2-eigen ros-melodic-tf2-geometry-msgs ros-melodic-ackermann-msgs \
- ros-melodic-camera-calibration-parsers ros-melodic-camera-info-manager \
- ros-melodic-pcl-ros \
- libatlas-base-dev protobuf-compiler libprotobuf-dev ros-melodic-control-toolbox \
- unzip python-pip python-tk python-kitchen qtbase5-dev doxygen -y
-
-RUN apt-get install -y lcov ccache
-
+RUN apt update && xargs --arg-file=required_packages apt install -y
+ 
 RUN ln -s /usr/bin/ccache /usr/local/bin/gcc; ln -s /usr/bin/ccache /usr/local/bin/g++; ln -s /usr/bin/ccache /usr/local/bin/cc; ln -s /usr/bin/ccache /usr/local/bin/c++
 RUN ln -s /usr/bin/ccache /usr/local/bin/clang; ln -s /usr/bin/ccache /usr/local/bin/clang++
 
