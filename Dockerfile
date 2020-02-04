@@ -15,7 +15,7 @@ RUN apt update && apt install git ros-melodic-desktop ros-melodic-realtime-tools
  ros-melodic-pcl-ros \
  ros-melodic-gazebo-ros-control ros-melodic-gazebo-ros-pkgs \
  libatlas-base-dev protobuf-compiler libprotobuf-dev ros-melodic-control-toolbox \
- unzip python-pip python-tk python-kitchen qtbase5-dev doxygen -y
+ unzip python-pip python-tk python-kitchen qtbase5-dev doxygen rsync -y
 
 RUN apt-get install -y lcov ccache
 
