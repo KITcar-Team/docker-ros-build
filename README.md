@@ -6,6 +6,7 @@ The source is available at KITcar's Gitlab and a mirrored version at
 [Github](https://github.com/KITcar-Team/docker-ros-build), the build docker
 image is available at
 [Dockerhub](https://hub.docker.com/r/kitcar/docker-ros-build/).
+(only protected branches are mirrored)
 
 
 ## Get Docker Image
