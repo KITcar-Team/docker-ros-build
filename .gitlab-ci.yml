@@ -27,7 +27,7 @@ deploy-docker-image:
       if [ "$CI_COMMIT_REF_NAME" == "master" ]; then
         export IMAGE_TAG=latest
       else
-        export IMAGE_TAG=branch_${CI_COMMIT_REF_NAME}
+        export IMAGE_TAG=${CI_COMMIT_REF_NAME}
       fi
   script:
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY 
