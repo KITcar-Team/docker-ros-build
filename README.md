@@ -37,6 +37,6 @@ Inside the container, you can build with:
 
 ## Update Docker Image
 
-The Docker image will be updated after merging into the master branch at KITcar's GitLab. The image on the `master` branch is tagged as `latest`, other branches will create a Docker image tagged with the branch name
+The Docker image will be updated after merging into the master branch at KITcar's GitLab. The image on the `master` branch is tagged as `latest`, other branches will create a Docker image tagged with the branch name (for a branch named "example" the tag is "branch_example").
 
 Because some of our GitLab Runners are low on hard drive memory, we should keep an eye on the size of the Docker image.
