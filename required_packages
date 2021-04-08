@@ -1,10 +1,10 @@
 wget
 git
-clang-10 clang-tidy-10 llvm-10
+clang-11 clang-tidy-11 llvm-11
 ros-noetic-desktop
 ros-noetic-realtime-tools
 ros-noetic-tf2
-libomp-dev
+libomp-11-dev
 ros-noetic-tf2-eigen
 ros-noetic-tf2-geometry-msgs 
 ros-noetic-ackermann-msgs
