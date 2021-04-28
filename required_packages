@@ -22,3 +22,4 @@ doxygen
 lcov
 ccache
 rsync
+librange-v3-dev
