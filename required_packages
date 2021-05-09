@@ -26,3 +26,4 @@ lcov
 ccache
 rsync
 librange-v3-dev
+catkin-lint
