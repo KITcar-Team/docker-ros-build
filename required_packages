@@ -6,11 +6,14 @@ ros-noetic-realtime-tools
 ros-noetic-tf2
 libomp-11-dev
 ros-noetic-tf2-eigen
-ros-noetic-tf2-geometry-msgs 
+ros-noetic-tf2-geometry-msgs
 ros-noetic-ackermann-msgs
 ros-noetic-camera-calibration-parsers
 ros-noetic-camera-info-manager
 ros-noetic-pcl-ros
+ros-noetic-image-proc
+ros-noetic-joy
+ros-noetic-hector-trajectory-server
 libatlas-base-dev
 protobuf-compiler
 libprotobuf-dev
@@ -23,3 +26,4 @@ lcov
 ccache
 rsync
 librange-v3-dev
+catkin-lint
